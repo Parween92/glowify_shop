@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+body {
+  font-family: comfortaa;
+  background-color: #f9fafb;
+}
+
+.nav-link {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0%;
+  height: 5px;
+  background-color: #e8b09e;
+  border-radius: 60% 40% 30% 70% / 60% 40% 60% 40%;
+  transform: translateX(-50%);
+  transition: width 0.4s ease, opacity 0.4s ease;
+  opacity: 0;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+  opacity: 1;
+}
+
+.navbar-scrolled .nav-link::after {
+  background-color: #d59c8c;
+}
