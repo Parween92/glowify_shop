@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:8000";
+const API_BASE_URL = "https://glowify-backend-project.onrender.com";
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
@@ -34,7 +34,7 @@ apiClient.interceptors.response.use(
 
     if (error.code === "ERR_NETWORK") {
       throw new Error(
-        "Backend server is not running. Please start the backend server."
+        "Cannot connect to server. Please check your internet connection."
       );
     }
 
