@@ -8,6 +8,9 @@ import {
   FaShoppingBag,
   FaRegGem,
 } from "react-icons/fa";
+
+// Import fallback image
+import FallbackImage from "../assets/react.svg";
 import { GiLipstick, GiPerfumeBottle, GiSunglasses } from "react-icons/gi";
 import { BsCart2, BsHeart, BsHeartFill } from "react-icons/bs";
 import AddToCart from "./AddToCart";
@@ -290,7 +293,7 @@ const Product = () => {
                   alt={modalProduct.title}
                   className="rounded-xl w-full max-h-[300px] object-contain"
                   onError={(e) => {
-                    e.target.src = "/src/assets/react.svg";
+                    e.target.src = FallbackImage;
                   }}
                 />
                 {renderStars(modalProduct.rating)}

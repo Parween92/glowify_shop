@@ -8,13 +8,21 @@ import { CiCreditCard1 } from "react-icons/ci";
 import { BsCart2, BsFire } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
+// Import assets
+import ChanelLogo from "../assets/Chanel.png";
+import NikeLogo from "../assets/Nike.png";
+import RolexLogo from "../assets/Rolex.png";
+import GucciLogo from "../assets/Gucci.png";
+import FashionVideo from "../assets/fashion.mp4";
+import Video2 from "../assets/video2.mp4";
+
 const SALE_PRODUCT_IDS = [1, 5];
 
 const brands = [
-  { logo: "src/assets/Chanel.png" },
-  { logo: "src/assets/Nike.png" },
-  { logo: "src/assets/Rolex.png" },
-  { logo: "src/assets/Gucci.png" },
+  { logo: ChanelLogo },
+  { logo: NikeLogo },
+  { logo: RolexLogo },
+  { logo: GucciLogo },
 ];
 
 const categories = [
@@ -78,7 +86,7 @@ export const Home = () => {
       <div className="relative w-full h-[360px] md:h-[580px] flex items-center justify-center overflow-hidden">
         <video
           className="w-full h-full object-cover"
-          src="src/assets/fashion.mp4"
+          src={FashionVideo}
           autoPlay
           loop
           muted
@@ -173,7 +181,7 @@ export const Home = () => {
           <div className="w-auto flex justify-center">
             <video
               className="w-[500px] h-[700px] object-[center_30%] object-cover rounded-xl shadow-lg"
-              src="src/assets/video2.mp4"
+              src={Video2}
               autoPlay
               loop
               muted

@@ -1,13 +1,15 @@
 import axios from "axios";
 
-const API_BASE_URL = "https://glowify-backend-project.onrender.com";
+const API_BASE_URL =
+  import.meta.env.VITE_API_URL ||
+  "https://glowify-backend-project.onrender.com";
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
   headers: {
     "Content-Type": "application/json",
   },
-  timeout: 10000,
+  timeout: 60000,
 });
 
 apiClient.interceptors.request.use(

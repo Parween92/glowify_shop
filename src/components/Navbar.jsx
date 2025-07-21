@@ -4,6 +4,10 @@ import { BsCart2 } from "react-icons/bs";
 import { GoPerson } from "react-icons/go";
 import { BsPersonCircle } from "react-icons/bs";
 
+// Import logos
+import GlowifyLogo from "../assets/Glowify-Logo.png";
+import GlowifyBlueLogo from "../assets/Glowify-blau-Logo.png";
+
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -43,11 +47,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto flex items-center justify-between p-2">
         <div className="select-none cursor-pointer">
           <img
-            src={
-              scrolled
-                ? "/src/assets/Glowify-Logo.png"
-                : "/src/assets/Glowify-blau-Logo.png"
-            }
+            src={scrolled ? GlowifyLogo : GlowifyBlueLogo}
             className="h-10 transition-all duration-500"
             alt="Glowify Logo"
           />
