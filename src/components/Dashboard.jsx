@@ -79,11 +79,11 @@ export const Dashboard = () => {
   };
 
   const sidebarItems = [
-    { id: "profile", label: "Profile", icon: <BsPersonCircle /> },
-    { id: "orders", label: "Orders", icon: <BsBoxSeam /> },
-    { id: "favorites", label: "Favorites", icon: <BsHeart /> },
-    { id: "newsletter", label: "Newsletter", icon: <BsEnvelope /> },
-    { id: "settings", label: "Settings", icon: <IoSettingsOutline /> },
+    { id: "profile", label: "Profile", icon: BsPersonCircle },
+    { id: "orders", label: "Orders", icon: BsBoxSeam },
+    { id: "favorites", label: "Favorites", icon: BsHeart },
+    { id: "newsletter", label: "Newsletter", icon: BsEnvelope },
+    { id: "settings", label: "Settings", icon: IoSettingsOutline },
   ];
 
   const renderContent = () => {
@@ -223,23 +223,24 @@ export const Dashboard = () => {
                       className="border-b border-gray-200 pb-4"
                     >
                       <div className="font-bold text-[#326287]">
-                        Order ID: {order.orderId}
+                        Order ID: {order.orderId || `order-${idx}`}
                       </div>
                       <div className="text-sm text-[#326287] mb-2">
-                        Date: {new Date(order.date).toLocaleString()}
+                        Date: {order.date ? new Date(order.date).toLocaleString() : 'Unknown Date'}
                       </div>
                       <div className="mb-2 text-[#326287] ">
-                        Total: {order.total.toFixed(2)} €
+                        Total: {order.total ? order.total.toFixed(2) : '0.00'} €
                       </div>
                       <div className="text-[#326287] ">
                         Items:
                         <ul className="text-[#326287] list-disc ml-6">
-                          {order.items.map((item) => (
-                            <li key={item.id}>
-                              {item.title} (x{item.quantity || 1}) -{" "}
-                              {(
-                                parseFloat(item.price) * (item.quantity || 1)
-                              ).toFixed(2)}{" "}
+                          {order.items && order.items.map((item, itemIdx) => (
+                            <li key={item.id || `item-${itemIdx}`}>
+                              {item.title || 'Unknown Item'} (x{item.quantity || 1}) -{" "}
+                              {item.price ? 
+                                (parseFloat(item.price) * (item.quantity || 1)).toFixed(2) 
+                                : '0.00'
+                              }{" "}
                               €
                             </li>
                           ))}
@@ -276,9 +277,12 @@ export const Dashboard = () => {
                       style={{ aspectRatio: "4 / 3" }}
                     >
                       <img
-                        src={product.images?.[0] || product.image}
-                        alt={product.title}
+                        src={product.images?.[0] || product.image || '/Glowify-Logo.png'}
+                        alt={product.title || 'Product'}
                         className="w-full h-full object-contain"
+                        onError={(e) => {
+                          e.target.src = '/Glowify-Logo.png';
+                        }}
                       />
                       <button
                         onClick={() => removeFavorite(product.id)}
@@ -289,16 +293,16 @@ export const Dashboard = () => {
                     </div>
                     <div className="p-4">
                       <h3 className="text-[#326287] font-semibold text-lg mb-2 truncate">
-                        {product.title}
+                        {product.title || 'Product'}
                       </h3>
                       <p className="text-[#326287]/80 text-sm mb-3">
-                        {product.description?.length > 60
+                        {product.description && product.description.length > 60
                           ? product.description.slice(0, 57) + "..."
-                          : product.description}
+                          : product.description || 'No description'}
                       </p>
                       <div className="flex items-center justify-between mb-3">
                         <span className="text-[#326287] font-semibold text-xl">
-                          {product.price} €
+                          {product.price || '0.00'} €
                         </span>
                       </div>
                       <button
@@ -405,20 +409,23 @@ export const Dashboard = () => {
             Dashboard
           </h3>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-            {sidebarItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => setActiveSection(item.id)}
-                className={`flex items-center justify-center gap-2 px-3 py-2 rounded-lg transition-colors text-sm ${
-                  activeSection === item.id
-                    ? "bg-[#e8b09e]/60 text-white"
-                    : "text-white hover:bg-[#e8b09e]/20"
-                }`}
-              >
-                <item.icon className="text-sm" />
-                <span className="hidden sm:inline">{item.label}</span>
-              </button>
-            ))}
+            {sidebarItems.map((item) => {
+              const IconComponent = item.icon;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => setActiveSection(item.id)}
+                  className={`flex items-center justify-center gap-2 px-3 py-2 rounded-lg transition-colors text-sm ${
+                    activeSection === item.id
+                      ? "bg-[#e8b09e]/60 text-white"
+                      : "text-white hover:bg-[#e8b09e]/20"
+                  }`}
+                >
+                  <IconComponent className="text-sm" />
+                  <span className="hidden sm:inline">{item.label}</span>
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -435,21 +442,24 @@ export const Dashboard = () => {
           Dashboard
         </h3>
         <nav className="space-y-2 flex-1">
-          {sidebarItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => setActiveSection(item.id)}
-              className={`w-full flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 sm:py-3 rounded-lg 
-                transition-colors text-sm sm:text-base ${
-                  activeSection === item.id
-                    ? "bg-[#e8b09e]/60 text-white"
-                    : "text-white hover:bg-[#e8b09e]/20"
-                }`}
-            >
-              <item.icon className="text-sm sm:text-base" />
-              <span className="font-medium">{item.label}</span>
-            </button>
-          ))}
+          {sidebarItems.map((item) => {
+            const IconComponent = item.icon;
+            return (
+              <button
+                key={item.id}
+                onClick={() => setActiveSection(item.id)}
+                className={`w-full flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 sm:py-3 rounded-lg 
+                  transition-colors text-sm sm:text-base ${
+                    activeSection === item.id
+                      ? "bg-[#e8b09e]/60 text-white"
+                      : "text-white hover:bg-[#e8b09e]/20"
+                  }`}
+              >
+                <IconComponent className="text-sm sm:text-base" />
+                <span className="font-medium">{item.label}</span>
+              </button>
+            );
+          })}
         </nav>
         <div className="mt-auto pt-3 sm:pt-4 border-t border-white">
           <button

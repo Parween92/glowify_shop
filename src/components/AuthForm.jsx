@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BsStars } from "react-icons/bs";
 import { GoPersonAdd, GoPerson } from "react-icons/go";
-import api from "../../api";
+import api from "../utils/api";
 
 export const AuthForm = () => {
   const navigate = useNavigate();

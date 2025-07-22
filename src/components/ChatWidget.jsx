@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { BsChatDots, BsX } from "react-icons/bs";
 import SimpleChatbot from "./SimpleChatbot";
-import "../styles/chatWidget.css";
 
+// Widget für alle Seiten
 const ChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [hasBeenOpened, setHasBeenOpened] = useState(
@@ -72,6 +72,9 @@ const ChatWidget = () => {
               <div>
                 <h3 className="font-bold flex items-center gap-2 text-sm sm:text-xs md:text-sm">
                   🤖 Glowify AI Assistant
+                  <span className="font-normal bg-white/20 px-1 py-0.5 rounded text-xs">
+                    Demo
+                  </span>
                 </h3>
                 <p className="text-white text-xs">How can I help you?</p>
               </div>

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
+// Haupt-Chatbot mit vorgefertigten Antworten
 const SimpleChatbot = ({ isWidget = false }) => {
   const [messages, setMessages] = useState([
     {
@@ -351,6 +352,9 @@ const SimpleChatbot = ({ isWidget = false }) => {
         >
           <h2 className="text-lg sm:text-xl font-bold flex items-center gap-2">
             🤖 Glowify AI Assistant
+            <span className="text-xs font-normal bg-white/20 px-2 py-1 rounded-full">
+              Demo
+            </span>
           </h2>
           <p className="text-orange-100 text-xs sm:text-sm">
             Your personal shopping assistant - Always here for you!
@@ -446,7 +450,7 @@ const SimpleChatbot = ({ isWidget = false }) => {
       {/* Info Area  */}
       {!isWidget && (
         <div className="bg-gray-100 p-2 sm:p-3 text-xs text-gray-600">
-          <p className="flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-2 text-center sm:text-left">
+          <p className="flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-2 text-center sm:text-left mb-2">
             <span className="flex items-center gap-1">
               🚀 <strong>Fast & Reliable:</strong> Instant answers to your
               questions.
@@ -456,6 +460,12 @@ const SimpleChatbot = ({ isWidget = false }) => {
               brands.
             </span>
           </p>
+          <div className="text-center text-xs text-gray-500 border-t border-gray-300 pt-2">
+            <span className="flex items-center justify-center gap-1">
+              ⚡ <strong>Demo AI:</strong> Simulated chatbot with predefined responses 
+              (free alternative to ChatGPT API)
+            </span>
+          </div>
         </div>
       )}
     </div>

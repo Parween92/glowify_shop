@@ -1,5 +1,6 @@
 import SimpleChatbot from "../components/SimpleChatbot";
 
+//Separate Chat-Seite
 const ChatPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 py-4 sm:py-6 md:py-8">
@@ -12,6 +13,19 @@ const ChatPage = () => {
             Ask questions about our Glowify shop or simply chat with our AI
             assistant. Quick and helpful answers guaranteed!
           </p>
+
+          <div className="mt-4 mx-auto max-w-lg">
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 text-sm text-blue-800">
+              <div className="flex items-center justify-center gap-2 mb-1">
+                <span className="text-blue-600">ℹ️</span>
+                <strong>Demo Chatbot</strong>
+              </div>
+              <p className="text-xs">
+                This is a simulated AI assistant with predefined responses.
+                Created as a free alternative to ChatGPT API.
+              </p>
+            </div>
+          </div>
         </div>
 
         <SimpleChatbot />

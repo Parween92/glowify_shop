@@ -9,7 +9,6 @@ import {
   FaRegGem,
 } from "react-icons/fa";
 
-// Import fallback image
 import FallbackImage from "../assets/Glowify-blau-Logo.png";
 import { GiLipstick, GiPerfumeBottle, GiSunglasses } from "react-icons/gi";
 import { BsCart2, BsHeart, BsHeartFill } from "react-icons/bs";
