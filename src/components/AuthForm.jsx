@@ -50,7 +50,18 @@ export const AuthForm = () => {
         navigate("/dashboard");
       }, 1500);
     } catch (error) {
-      setError(error.message || "Login failed");
+      if (
+        error.message.includes("401") ||
+        error.message.toLowerCase().includes("unauthorized")
+      ) {
+        setError("Invalid email or password. Please check your credentials.");
+      } else if (error.message.includes("404")) {
+        setError("User not found. Please register first or check your email.");
+      } else if (error.message.includes("timeout")) {
+        setError("Login timed out. Please try again.");
+      } else {
+        setError(error.message || "Login failed. Please try again.");
+      }
     } finally {
       setLoading(false);
     }
@@ -68,7 +79,7 @@ export const AuthForm = () => {
     }
     try {
       const response = await api.register(registerData);
-      setSuccess("Registration successful!");
+      setSuccess("Registration successful! You can now login.");
       setTimeout(() => {
         setIsLogin(true);
         setRegisterData({
@@ -77,9 +88,23 @@ export const AuthForm = () => {
           password: "",
           confirmPassword: "",
         });
+        setSuccess("");
       }, 2000);
     } catch (error) {
-      setError(error.message || "Registration failed");
+      if (
+        error.message.includes("409") ||
+        error.message.toLowerCase().includes("conflict")
+      ) {
+        setError(
+          "This email is already registered. Please use a different email or try logging in instead."
+        );
+      } else if (error.message.includes("400")) {
+        setError("Invalid registration data. Please check all fields.");
+      } else if (error.message.includes("timeout")) {
+        setError("Registration timed out. Please try again.");
+      } else {
+        setError(error.message || "Registration failed. Please try again.");
+      }
     } finally {
       setLoading(false);
     }
@@ -118,15 +143,29 @@ export const AuthForm = () => {
         <div className="p-8">
           {error && (
             <div
-              className="bg-red-100 border border-gray-200 text-[#D59C8C] 
+              className="bg-red-100 border border-red-300 text-red-700 
             px-4 py-3 rounded-lg mb-6"
             >
               {error}
+              {error.includes("already registered") && (
+                <div className="mt-2">
+                  <button
+                    onClick={() => {
+                      setIsLogin(true);
+                      setError("");
+                      setLoginData({ email: registerData.email, password: "" });
+                    }}
+                    className="text-[#326287] underline text-sm hover:text-[#264a66]"
+                  >
+                    Switch to Login →
+                  </button>
+                </div>
+              )}
             </div>
           )}
           {success && (
             <div
-              className="bg-gray-200 border border-gray-200 text-[#D59C8C]
+              className="bg-green-100 border border-green-300 text-green-700
              px-4 py-3 rounded-lg mb-6"
             >
               {success}
