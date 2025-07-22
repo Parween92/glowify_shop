@@ -148,8 +148,14 @@ export const Dashboard = () => {
                       Claim
                     </button>
                   </div>
-                  <div className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-4 h-4 bg-gray-50 rounded-full"></div>
-                  <div className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-1/2 w-4 h-4 bg-gray-50 rounded-full"></div>
+                  <div
+                    className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-1/2 w-4 h-4
+                   bg-gray-50 rounded-full"
+                  ></div>
+                  <div
+                    className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-1/2 w-4 h-4
+                   bg-gray-50 rounded-full"
+                  ></div>
                 </div>
               </div>
             </div>
@@ -297,7 +303,8 @@ export const Dashboard = () => {
                       </div>
                       <button
                         onClick={() => handleAddToCart(product)}
-                        className="w-full flex items-center justify-center gap-2 bg-[#e8b09e] hover:bg-[#D59C8C] transition-colors
+                        className="w-full flex items-center justify-center gap-2 bg-[#e8b09e] hover:bg-[#D59C8C] 
+                        transition-colors
                          rounded-xl px-4 py-2 text-white font-semibold shadow-md"
                       >
                         <BsCart2 />
@@ -352,13 +359,22 @@ export const Dashboard = () => {
                 Privacy & Security
               </h3>
               <div className="space-y-4">
-                <button className="w-full text-[#326287] text-left p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition">
+                <button
+                  className="w-full text-[#326287] text-left p-3 border border-gray-200 rounded-lg
+                 hover:bg-gray-50 transition"
+                >
                   Change Password
                 </button>
-                <button className="w-full text-[#326287] text-left p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition">
+                <button
+                  className="w-full text-[#326287] text-left p-3 border border-gray-200 rounded-lg
+                 hover:bg-gray-50 transition"
+                >
                   Privacy Settings
                 </button>
-                <button className="w-full text-[#326287] text-left p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition">
+                <button
+                  className="w-full text-[#326287] text-left p-3 border border-gray-200 rounded-lg
+                 hover:bg-gray-50 transition"
+                >
                   Delete Account
                 </button>
               </div>
@@ -371,16 +387,51 @@ export const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-30 flex gap-6 px-6 md:px-12 pb-10">
+    <div
+      className="min-h-screen bg-gray-50 pt-20 sm:pt-24 md:pt-30 flex flex-col lg:flex-row gap-4 
+    md:gap-6 px-4 sm:px-6 md:px-12 pb-10"
+    >
+      {/* Mobile Navigation */}
+      <div className="lg:hidden w-full mb-4">
+        <div
+          className="bg-white rounded-lg shadow-md p-4"
+          style={{
+            background:
+              "linear-gradient(50deg, #326287 25%, #D59C8C 85%, #E8B09E 100%)",
+            transition: "background 0.5s ease-in-out",
+          }}
+        >
+          <h3 className="text-lg font-bold text-center text-white mb-3">
+            Dashboard
+          </h3>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+            {sidebarItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => setActiveSection(item.id)}
+                className={`flex items-center justify-center gap-2 px-3 py-2 rounded-lg transition-colors text-sm ${
+                  activeSection === item.id
+                    ? "bg-[#e8b09e]/60 text-white"
+                    : "text-white hover:bg-[#e8b09e]/20"
+                }`}
+              >
+                <item.icon className="text-sm" />
+                <span className="hidden sm:inline">{item.label}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
       <aside
-        className="hidden md:flex flex-col sticky top-24 h-[calc(100vh-6rem)] w-64 bg-white rounded-lg shadow-md p-6"
+        className="hidden lg:flex flex-col sticky top-24 h-[calc(100vh-6rem)] w-64 bg-white rounded-lg shadow-md p-6"
         style={{
           background:
             "linear-gradient(50deg, #326287 25%, #D59C8C 85%, #E8B09E 100%)",
           transition: "background 0.5s ease-in-out",
         }}
       >
-        <h3 className="text-2xl font-bold text-center mb-6 text-white">
+        <h3 className="text-xl sm:text-2xl font-bold text-center mb-4 sm:mb-6 text-white">
           Dashboard
         </h3>
         <nav className="space-y-2 flex-1">
@@ -388,28 +439,30 @@ export const Dashboard = () => {
             <button
               key={item.id}
               onClick={() => setActiveSection(item.id)}
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
-                activeSection === item.id
-                  ? "bg-[#e8b09e]/60 text-white"
-                  : "text-white hover:bg-[#e8b09e]/20"
-              }`}
+              className={`w-full flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 sm:py-3 rounded-lg 
+                transition-colors text-sm sm:text-base ${
+                  activeSection === item.id
+                    ? "bg-[#e8b09e]/60 text-white"
+                    : "text-white hover:bg-[#e8b09e]/20"
+                }`}
             >
-              {item.icon}
+              <item.icon className="text-sm sm:text-base" />
               <span className="font-medium">{item.label}</span>
             </button>
           ))}
         </nav>
-        <div className="mt-auto pt-4 border-t border-white">
+        <div className="mt-auto pt-3 sm:pt-4 border-t border-white">
           <button
             onClick={handleLogout}
-            className="w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors text-white hover:bg-[#e8b09e]/20"
+            className="w-full flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 sm:py-3 rounded-lg 
+            transition-colors text-white hover:bg-[#e8b09e]/20 text-sm sm:text-base"
           >
-            <BiLogOut />
+            <BiLogOut className="text-sm sm:text-base" />
             <span className="font-medium">Logout</span>
           </button>
         </div>
       </aside>
-      <main className="flex-1">{renderContent()}</main>
+      <main className="flex-1 w-full lg:w-auto">{renderContent()}</main>
     </div>
   );
 };

@@ -146,7 +146,8 @@ const Checkout = () => {
                   value={formData.email}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-3 py-2 rounded mb-2 text-[#326287] placeholder-[#3262879c] border-1 focus:outline-none focus:ring-1 
+                  className="w-full px-3 py-2 rounded mb-2 text-[#326287] placeholder-[#3262879c] border-1 
+                  focus:outline-none focus:ring-1 
                   focus:ring-[#264a66]"
                 />
               </div>
@@ -162,7 +163,8 @@ const Checkout = () => {
                     value={formData.firstName}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-2 rounded mb-2 text-[#326287] placeholder-[#3262879c] border-1 focus:outline-none focus:ring-1
+                    className="w-full px-3 py-2 rounded mb-2 text-[#326287] placeholder-[#3262879c] border-1 
+                    focus:outline-none focus:ring-1
                      focus:ring-[#264a66]"
                   />
                   <input
@@ -172,7 +174,8 @@ const Checkout = () => {
                     value={formData.lastName}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-2 rounded mb-2 text-[#326287] placeholder-[#3262879c] border-1 focus:outline-none focus:ring-1
+                    className="w-full px-3 py-2 rounded mb-2 text-[#326287] placeholder-[#3262879c] 
+                    border-1 focus:outline-none focus:ring-1
                      focus:ring-[#264a66]"
                   />
                 </div>
@@ -183,7 +186,8 @@ const Checkout = () => {
                   value={formData.address}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-3 py-2 rounded mb-2 text-[#326287] placeholder-[#3262879c] border-1 focus:outline-none focus:ring-1 
+                  className="w-full px-3 py-2 rounded mb-2 text-[#326287] placeholder-[#3262879c]
+                   border-1 focus:outline-none focus:ring-1 
                   focus:ring-[#264a66]"
                 />
                 <div className="grid pt-4 grid-cols-2 gap-4">
@@ -194,7 +198,8 @@ const Checkout = () => {
                     value={formData.city}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-2 rounded mb-2 text-[#326287] placeholder-[#3262879c] border-1 focus:outline-none focus:ring-1
+                    className="w-full px-3 py-2 rounded mb-2 text-[#326287] placeholder-[#3262879c]
+                     border-1 focus:outline-none focus:ring-1
                      focus:ring-[#264a66]"
                   />
                   <input
@@ -204,7 +209,8 @@ const Checkout = () => {
                     value={formData.postalCode}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-2 rounded mb-2 text-[#326287] placeholder-[#3262879c] border-1 focus:outline-none focus:ring-1 
+                    className="w-full px-3 py-2 rounded mb-2 text-[#326287] placeholder-[#3262879c] 
+                    border-1 focus:outline-none focus:ring-1 
                     focus:ring-[#264a66]"
                   />
                 </div>
@@ -221,7 +227,8 @@ const Checkout = () => {
                   value={formData.cardName}
                   onChange={handleInputChange}
                   required
-                  className="w-full mb-6 px-3 py-2 rounded text-[#326287] placeholder-[#3262879c] border-1 focus:outline-none focus:ring-1
+                  className="w-full mb-6 px-3 py-2 rounded text-[#326287] placeholder-[#3262879c]
+                   border-1 focus:outline-none focus:ring-1
                    focus:ring-[#264a66]"
                 />
                 <input
@@ -231,7 +238,8 @@ const Checkout = () => {
                   value={formData.cardNumber}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-3 py-2 rounded mb-6 text-[#326287] placeholder-[#3262879c] border-1 focus:outline-none focus:ring-1 
+                  className="w-full px-3 py-2 rounded mb-6 text-[#326287] placeholder-[#3262879c]
+                   border-1 focus:outline-none focus:ring-1 
                   focus:ring-[#264a66]"
                 />
                 <div className="grid grid-cols-2 gap-4">
@@ -242,7 +250,8 @@ const Checkout = () => {
                     value={formData.expiryDate}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-2 rounded mb-2 text-[#326287] placeholder-[#3262879c] border-1 focus:outline-none focus:ring-1 
+                    className="w-full px-3 py-2 rounded mb-2 text-[#326287] placeholder-[#3262879c] 
+                    border-1 focus:outline-none focus:ring-1 
                     focus:ring-[#264a66]"
                   />
                   <input
@@ -252,7 +261,8 @@ const Checkout = () => {
                     value={formData.cvv}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-2 rounded mb-2 text-[#326287] placeholder-[#3262879c] border-1 focus:outline-none
+                    className="w-full px-3 py-2 rounded mb-2 text-[#326287] placeholder-[#3262879c] 
+                    border-1 focus:outline-none
                      focus:ring-1 focus:ring-[#264a66]"
                   />
                 </div>
@@ -264,7 +274,8 @@ const Checkout = () => {
               <button
                 type="submit"
                 disabled={isProcessing}
-                className="w-full bg-[#D59C8C] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#B3746E] transition-colors disabled:opacity-50 
+                className="w-full bg-[#D59C8C] text-white font-semibold py-3 px-6 rounded-lg
+                 hover:bg-[#B3746E] transition-colors disabled:opacity-50 
                 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {isProcessing ? (

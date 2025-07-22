@@ -349,10 +349,10 @@ const SimpleChatbot = ({ isWidget = false }) => {
             transition: "background 0.5s ease-in-out",
           }}
         >
-          <h2 className="text-xl font-bold flex items-center gap-2">
+          <h2 className="text-lg sm:text-xl font-bold flex items-center gap-2">
             🤖 Glowify AI Assistant
           </h2>
-          <p className="text-orange-100 text-sm">
+          <p className="text-orange-100 text-xs sm:text-sm">
             Your personal shopping assistant - Always here for you!
           </p>
         </div>
@@ -361,8 +361,8 @@ const SimpleChatbot = ({ isWidget = false }) => {
       {/* Chat*/}
       <div
         className={`${
-          isWidget ? "flex-1" : "h-96"
-        } chat-messages overflow-y-auto p-4 space-y-4 bg-gray-50`}
+          isWidget ? "flex-1" : "h-80 sm:h-96"
+        } chat-messages overflow-y-auto p-3 sm:p-4 space-y-3 sm:space-y-4 bg-gray-50`}
       >
         {messages.map((message) => (
           <div
@@ -372,7 +372,7 @@ const SimpleChatbot = ({ isWidget = false }) => {
             }`}
           >
             <div
-              className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
+              className={`max-w-[280px] sm:max-w-xs lg:max-w-md px-3 sm:px-4 py-2 rounded-lg ${
                 message.sender === "user"
                   ? "bg-gradient-to-r from-[#e8b09e] to-[#D59C8C] text-white"
                   : "bg-white text-gray-800 shadow-md border border-gray-300"
@@ -391,7 +391,10 @@ const SimpleChatbot = ({ isWidget = false }) => {
 
         {isLoading && (
           <div className="flex justify-start">
-            <div className="bg-white text-gray-800 shadow-md border max-w-xs lg:max-w-md px-4 py-2 rounded-lg">
+            <div
+              className="bg-white text-gray-800 shadow-md border max-w-[280px] sm:max-w-xs 
+            lg:max-w-md px-3 sm:px-4 py-2 rounded-lg"
+            >
               <div className="flex space-x-1">
                 <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
                 <div
@@ -411,7 +414,7 @@ const SimpleChatbot = ({ isWidget = false }) => {
       </div>
 
       {/* Input Area */}
-      <div className="p-3 border-t border-gray-300 bg-white">
+      <div className="p-2 sm:p-3 border-t border-gray-300 bg-white">
         <div className="flex space-x-2">
           <input
             type="text"
@@ -420,14 +423,15 @@ const SimpleChatbot = ({ isWidget = false }) => {
             onKeyDown={handleKeyDown}
             placeholder="Write a message..."
             disabled={isLoading}
-            className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2
+            className="flex-1 border border-gray-300 rounded-lg px-2 sm:px-3 py-2 text-xs 
+            sm:text-sm focus:outline-none focus:ring-2
              focus:ring-[#e8b09e] focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
           />
           <button
             onClick={handleSendMessage}
             disabled={isLoading || !inputMessage.trim()}
-            className=" text-white px-4 py-2 rounded-lg hover:bg-[#e8b09e]  focus:ring-[#e8b09e]
-             disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors text-sm font-medium"
+            className="text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-[#e8b09e] focus:ring-[#e8b09e]
+             disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors text-xs sm:text-sm font-medium"
             style={{
               background:
                 "linear-gradient(50deg, #326287 25%, #D59C8C 85%, #E8B09E 100%)",
@@ -441,11 +445,16 @@ const SimpleChatbot = ({ isWidget = false }) => {
 
       {/* Info Area  */}
       {!isWidget && (
-        <div className="bg-gray-100 p-3 text-xs text-gray-600">
-          <p className="flex items-center gap-2">
-            🚀 <strong>Fast & Reliable:</strong> Instant answers to your
-            questions. 💎 <strong>Glowify Expert:</strong> Specialized in our
-            premium brands.
+        <div className="bg-gray-100 p-2 sm:p-3 text-xs text-gray-600">
+          <p className="flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-2 text-center sm:text-left">
+            <span className="flex items-center gap-1">
+              🚀 <strong>Fast & Reliable:</strong> Instant answers to your
+              questions.
+            </span>
+            <span className="flex items-center gap-1">
+              💎 <strong>Glowify Expert:</strong> Specialized in our premium
+              brands.
+            </span>
           </p>
         </div>
       )}
