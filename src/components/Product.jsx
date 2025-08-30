@@ -26,8 +26,8 @@ const Product = () => {
       icon: <GiLipstick className="text-white text-lg" />,
     },
     {
-      key: "fragrances",
-      label: "Fragrances",
+      key: "Perfumes",
+      label: "Perfumes",
       icon: <GiPerfumeBottle className="text-white text-lg" />,
     },
     {
@@ -178,10 +178,10 @@ const Product = () => {
           <h3 className="text-lg font-bold text-center text-white mb-3">
             Filter
           </h3>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 justify-start">
             <button
               onClick={() => setSelectedCategory("all")}
-              className={`flex-1 min-w-[120px] flex font-medium items-center justify-center gap-2 
+              className={`flex-1 min-w-[120px] flex font-medium items-center  gap-2 
                 px-3 py-2 rounded-lg capitalize transition-colors ${
                   selectedCategory === "all"
                     ? "bg-[#e8b09e]/60 text-white"
@@ -189,13 +189,13 @@ const Product = () => {
                 }`}
             >
               <BsStars className="text-sm" />
-              All Products
+              All
             </button>
             {categories.map((category) => (
               <button
                 key={category.key}
                 onClick={() => setSelectedCategory(category.key)}
-                className={`flex-1 min-w-[120px] font-medium flex items-center justify-center gap-2
+                className={`flex-1 min-w-[120px] font-medium flex items-center gap-2
                    px-3 py-2 rounded-lg capitalize transition-colors ${
                      selectedCategory === category.key
                        ? "bg-[#e8b09e]/60 text-white"

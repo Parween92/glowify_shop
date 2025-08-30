@@ -141,7 +141,7 @@ const Navbar = () => {
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 top-16 bg-white z-40 shadow-lg">
+        <div className="md:hidden fixed inset-0 top-14 bg-white z-40 shadow-lg">
           <div className="flex flex-col p-4 space-y-3">
             <NavLink
               to="/"

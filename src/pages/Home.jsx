@@ -119,31 +119,38 @@ export const Home = () => {
       </div>
 
       {/* Benefits section */}
-      <section
-        className="w-full flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6 md:gap-8 
-      lg:gap-10 justify-center items-center py-4 sm:py-5 md:py-6 bg-white shadow-sm border-b-[#326287] px-4"
-      >
-        <Benefit
-          key="delivery"
-          icon={
-            <GoPackageDependents className="text-[#e8b09e] text-xl sm:text-2xl" />
-          }
-          text="Free Delivery (DE)"
-        />
-        <Benefit
-          key="payment"
-          icon={
-            <CiCreditCard1 className="text-[#e8b09e] text-2xl sm:text-3xl" />
-          }
-          text="Klarna Payment"
-        />
-        <Benefit
-          key="return"
-          icon={
-            <HiArrowUturnLeft className="text-[#e8b09e] text-lg sm:text-xl" />
-          }
-          text="30-Day Return Policy"
-        />
+      <section className="w-auto flex flex-col items-center py-4 sm:py-5 md:py-6 bg-white shadow-sm border-b-[#326287] px-4">
+        <div className="grid grid-cols-2 grid-rows-2 gap-2 sm:flex sm:flex-row sm:gap-6 md:gap-8 lg:gap-10 justify-center items-center w-full max-w-5xl">
+          <div className="col-span-1 row-span-1 flex justify-center">
+            <Benefit
+              key="delivery"
+              icon={
+                <GoPackageDependents className="text-[#e8b09e] text-xl sm:text-2xl" />
+              }
+              text="Free Delivery (DE)"
+            />
+          </div>
+
+          <div className="col-span-1 row-span-1 flex justify-center">
+            <Benefit
+              key="payment"
+              icon={
+                <CiCreditCard1 className="text-[#e8b09e] text-2xl sm:text-3xl" />
+              }
+              text="Klarna Payment"
+            />
+          </div>
+
+          <div className="col-span-2 row-span-1 flex justify-center">
+            <Benefit
+              key="return"
+              icon={
+                <HiArrowUturnLeft className="text-[#e8b09e] text-lg sm:text-xl" />
+              }
+              text="30-Day Return Policy"
+            />
+          </div>
+        </div>
       </section>
 
       {/* Offers */}

@@ -226,24 +226,31 @@ export const Dashboard = () => {
                         Order ID: {order.orderId || `order-${idx}`}
                       </div>
                       <div className="text-sm text-[#326287] mb-2">
-                        Date: {order.date ? new Date(order.date).toLocaleString() : 'Unknown Date'}
+                        Date:{" "}
+                        {order.date
+                          ? new Date(order.date).toLocaleString()
+                          : "Unknown Date"}
                       </div>
                       <div className="mb-2 text-[#326287] ">
-                        Total: {order.total ? order.total.toFixed(2) : '0.00'} €
+                        Total: {order.total ? order.total.toFixed(2) : "0.00"} €
                       </div>
                       <div className="text-[#326287] ">
                         Items:
                         <ul className="text-[#326287] list-disc ml-6">
-                          {order.items && order.items.map((item, itemIdx) => (
-                            <li key={item.id || `item-${itemIdx}`}>
-                              {item.title || 'Unknown Item'} (x{item.quantity || 1}) -{" "}
-                              {item.price ? 
-                                (parseFloat(item.price) * (item.quantity || 1)).toFixed(2) 
-                                : '0.00'
-                              }{" "}
-                              €
-                            </li>
-                          ))}
+                          {order.items &&
+                            order.items.map((item, itemIdx) => (
+                              <li key={item.id || `item-${itemIdx}`}>
+                                {item.title || "Unknown Item"} (x
+                                {item.quantity || 1}) -{" "}
+                                {item.price
+                                  ? (
+                                      parseFloat(item.price) *
+                                      (item.quantity || 1)
+                                    ).toFixed(2)
+                                  : "0.00"}{" "}
+                                €
+                              </li>
+                            ))}
                         </ul>
                       </div>
                     </li>
@@ -277,11 +284,15 @@ export const Dashboard = () => {
                       style={{ aspectRatio: "4 / 3" }}
                     >
                       <img
-                        src={product.images?.[0] || product.image || '/Glowify-Logo.png'}
-                        alt={product.title || 'Product'}
+                        src={
+                          product.images?.[0] ||
+                          product.image ||
+                          "/Glowify-Logo.png"
+                        }
+                        alt={product.title || "Product"}
                         className="w-full h-full object-contain"
                         onError={(e) => {
-                          e.target.src = '/Glowify-Logo.png';
+                          e.target.src = "/Glowify-Logo.png";
                         }}
                       />
                       <button
@@ -293,16 +304,16 @@ export const Dashboard = () => {
                     </div>
                     <div className="p-4">
                       <h3 className="text-[#326287] font-semibold text-lg mb-2 truncate">
-                        {product.title || 'Product'}
+                        {product.title || "Product"}
                       </h3>
                       <p className="text-[#326287]/80 text-sm mb-3">
                         {product.description && product.description.length > 60
                           ? product.description.slice(0, 57) + "..."
-                          : product.description || 'No description'}
+                          : product.description || "No description"}
                       </p>
                       <div className="flex items-center justify-between mb-3">
                         <span className="text-[#326287] font-semibold text-xl">
-                          {product.price || '0.00'} €
+                          {product.price || "0.00"} €
                         </span>
                       </div>
                       <button
@@ -408,7 +419,7 @@ export const Dashboard = () => {
           <h3 className="text-lg font-bold text-center text-white mb-3">
             Dashboard
           </h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 justify-items-start">
             {sidebarItems.map((item) => {
               const IconComponent = item.icon;
               return (
@@ -422,7 +433,7 @@ export const Dashboard = () => {
                   }`}
                 >
                   <IconComponent className="text-sm" />
-                  <span className="hidden sm:inline">{item.label}</span>
+                  <span className=" sm:inline">{item.label}</span>
                 </button>
               );
             })}
