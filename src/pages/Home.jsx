@@ -120,7 +120,7 @@ export const Home = () => {
 
       {/* Benefits section */}
       <section className="w-auto flex flex-col items-center py-4 sm:py-5 md:py-6 bg-white shadow-sm border-b-[#326287] px-4">
-        <div className="grid grid-cols-2 grid-rows-2 gap-2 sm:flex sm:flex-row sm:gap-6 md:gap-8 lg:gap-10 justify-center items-center w-full max-w-5xl">
+        <div className="grid grid-cols-2 grid-rows-2 gap-2 sm:flex sm:flex-row sm:gap-6 md:gap-8 lg:gap-10 justify-center items-center w-full max-w-full">
           <div className="col-span-1 row-span-1 flex justify-center">
             <Benefit
               key="delivery"
